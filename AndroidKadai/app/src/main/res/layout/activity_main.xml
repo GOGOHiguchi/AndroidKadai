@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0F2F1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⚔️ VS-Wiki"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            android:textColor="#004D40"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ユーザー設定 (CRUD: U)"
+                android:textStyle="bold"
+                android:textColor="#00796B"/>
+
+            <EditText
+                android:id="@+id/etUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ユーザー名を入力"
+                android:layout_marginTop="8dp"/>
+
+            <RadioGroup
+                android:id="@+id/rgQuizType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+                <RadioButton android:id="@+id/rbWords" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="文字数 (WORDS)" android:checked="true"/>
+                <RadioButton android:id="@+id/rbPv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="閲覧数 (PV数)" android:layout_marginStart="16dp"/>
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnSaveSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="設定を保存"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                style="?android:attr/buttonStyleSmall"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnStartGame"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="ゲームを始める"
+            android:textSize="20sp"
+            android:backgroundTint="#00796B"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#B2DFDB"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ハイスコア"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvHighScore1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🥇 ---  -  0 pts"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvHighScore2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🥈 ---  -  0 pts"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/tvHighScore3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🥉 ---  -  0 pts"
+                android:textSize="16sp"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnMyPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="マイページへ"
+            android:backgroundTint="#004D40"/>
+    </LinearLayout>
+</ScrollView>
