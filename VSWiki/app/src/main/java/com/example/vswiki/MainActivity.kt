@@ -1,4 +1,4 @@
-package com.vswiki
+package com.example.vswiki
 
 import android.content.Intent
 import android.os.Bundle
