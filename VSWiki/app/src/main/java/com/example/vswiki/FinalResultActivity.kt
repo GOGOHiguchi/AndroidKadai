@@ -17,9 +17,14 @@ class FinalResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFinalResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 1. Intentからのデータ取得
         val totalScore = intent.getIntExtra("TOTAL_SCORE", 0)
+        val totalCorrect = intent.getIntExtra("TOTAL_CORRECT", 0) // ✨ 追加：正解数を取得
         val maxCombo = intent.getIntExtra("MAX_COMBO", 0)
-        binding.tvYourScore.text = "今回のスコア: ${totalScore}pt\n正解数: ${totalScore} / 10 問\n最大連続正解: ${maxCombo} コンボ"
+
+        // ✨ 修正：正解数の変数部分を totalScore から totalCorrect へ変更
+        binding.tvYourScore.text = "今回のスコア: ${totalScore}pt\n正解数: ${totalCorrect} / 10 問\n最大連続正解: ${maxCombo} コンボ"
 
         val dao = AppDatabase.getDatabase(this).appDao()
 
@@ -37,7 +42,7 @@ class FinalResultActivity : AppCompatActivity() {
                     PlayerScore(userName = currentUserName, highScore = totalScore, maxCombo = maxCombo)
                 )
             } else {
-                // ✨ 判定：今回のスコアが、過去のハイスコアを上回っていた場合のみ上書き更新！
+                // 判定：今回のスコアが、過去のハイスコアを上回っていた場合のみ上書き更新！
                 if (totalScore > existingScore.highScore ||
                     (totalScore == existingScore.highScore && maxCombo > existingScore.maxCombo)) {
 

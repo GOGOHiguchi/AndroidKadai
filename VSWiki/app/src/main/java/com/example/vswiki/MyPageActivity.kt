@@ -119,7 +119,7 @@ class MyPageActivity : AppCompatActivity() {
             // ✨ ダイアログ内テキストの日本語化
             text = "【記録】: ${String.format("%,d", article.value)} ${article.unitType}\n\n【概要】:\n${article.extract.ifEmpty { "概要データがありません" }}"
             textSize = 16f
-            setTextColor(android.graphics.Color.LTGRAY)
+            setTextColor(android.graphics.Color.BLACK)
         }
 
         val scrollView = ScrollView(context).apply {
