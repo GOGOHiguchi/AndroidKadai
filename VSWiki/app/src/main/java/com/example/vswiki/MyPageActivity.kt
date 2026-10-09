@@ -28,7 +28,7 @@ class MyPageActivity : AppCompatActivity() {
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // ✨ 追加: メイン画面に戻るボタンの処理
+        // メイン画面に戻るボタンの処理
         binding.btnBackToMain.setOnClickListener {
             finish() // 現在のマイページを閉じて、前の画面（MainActivity）に戻る
         }
@@ -65,7 +65,7 @@ class MyPageActivity : AppCompatActivity() {
         lifecycleScope.launch {
             if (isFavoritesTab) {
                 currentDisplayArticles = dao.getFavoriteArticles()
-                // ✨ リスト表示の日本語化（例：⭐ 記事タイトル (1,250文字)）
+                // リスト表示の日本語化（例：記事タイトル (1,250文字)）
                 val list = currentDisplayArticles.map { "⭐ ${it.title} (${String.format("%,d", it.value)}${it.unitType})" }
                 binding.listViewHistory.adapter = ArrayAdapter(this@MyPageActivity, android.R.layout.simple_list_item_1, list)
             } else {
@@ -76,7 +76,7 @@ class MyPageActivity : AppCompatActivity() {
                     articlesList.addAll(withArticles.articles)
                 }
                 currentDisplayArticles = articlesList.distinctBy { it.articleId }
-                // ✨ リスト表示の日本語化（例：📄 記事タイトル (500回閲覧)）
+                // リスト表示の日本語化（例：📄 記事タイトル (500回閲覧)）
                 val list = currentDisplayArticles.map { "📄 ${it.title} (${String.format("%,d", it.value)}${it.unitType})" }
                 binding.listViewHistory.adapter = ArrayAdapter(this@MyPageActivity, android.R.layout.simple_list_item_1, list)
             }
@@ -94,7 +94,6 @@ class MyPageActivity : AppCompatActivity() {
         }
     }
 
-    // ✨ 大改造: ダイアログ内に画像表示エリアを動的追加
     private fun showArticleDetailDialog(article: WikiArticle) {
         val context = this
         val container = LinearLayout(context).apply {
@@ -109,14 +108,13 @@ class MyPageActivity : AppCompatActivity() {
             ).apply {
                 setMargins(0, 0, 0, 24)
             }
-            // ✨ scaleType を CENTER_CROP から FIT_CENTER に変更！
             scaleType = ImageView.ScaleType.FIT_CENTER
             setBackgroundColor(android.graphics.Color.DKGRAY)
         }
         container.addView(imageView)
 
         val textView = TextView(context).apply {
-            // ✨ ダイアログ内テキストの日本語化
+            // ダイアログ内テキスト
             text = "【記録】: ${String.format("%,d", article.value)} ${article.unitType}\n\n【概要】:\n${article.extract.ifEmpty { "概要データがありません" }}"
             textSize = 16f
             setTextColor(android.graphics.Color.BLACK)
@@ -137,7 +135,6 @@ class MyPageActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle(article.title)
             .setView(container)
-            // ✨ ボタン名も分かりやすく日本語化
             .setPositiveButton("Wikipediaを開く") { _, _ ->
                 if (article.url.isNotEmpty()) {
                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(article.url)))

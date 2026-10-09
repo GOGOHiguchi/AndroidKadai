@@ -25,7 +25,7 @@ class QuizActivity : AppCompatActivity() {
     private var currentCombo = 0
     private var maxCombo = 0
 
-    // ✨ 追加：現在のスコアを保持する変数
+    // 現在のスコアを保持する変数
     private var currentScore = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class QuizActivity : AppCompatActivity() {
         currentCombo = intent.getIntExtra("CURRENT_COMBO", 0)
         maxCombo = intent.getIntExtra("MAX_COMBO", 0)
 
-        // ✨ 追加：前画面からスコアを受け取る（初回は0）
+        // 前画面からスコアを受け取る（初回は0）
         currentScore = intent.getIntExtra("CURRENT_SCORE", 0)
 
         // ユーザー設定からクイズタイプを取得してUIを切り替える
@@ -130,7 +130,7 @@ class QuizActivity : AppCompatActivity() {
             putExtra("CURRENT_COMBO", currentCombo)
             putExtra("MAX_COMBO", maxCombo)
 
-            // ✨ 追加：リザルト画面に現在のスコアを渡す
+            // リザルト画面に現在のスコアを渡す
             putExtra("CURRENT_SCORE", currentScore)
 
             // --- 記事1のデータ処理 ---
